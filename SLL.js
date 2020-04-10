@@ -159,5 +159,15 @@ class SLList {
         return this;
 
     }
+
+    // Write an algorithm that returns the second-to-last value of a Singly Linked List
+    secondToLast(){
+
+    }
+
+    // Write an algorithm that, given a second SLL, concatenates it to the end of another SLL
+    concat(list2) {
+        
+    }
 }
 
