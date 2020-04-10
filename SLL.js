@@ -162,11 +162,42 @@ class SLList {
 
     // Write an algorithm that returns the second-to-last value of a Singly Linked List
     secondToLast(){
-
+        // Check to see if there even WILL be a second to last node.
+        if(this.head == null || this.head.next == null){
+            return false;
+        }
+        // set walker to the the first node and runner to the 2nd node
+        let walker = this.head;
+        let runner = walker.next;
+        // traverse until walker reaches the last node and walker reaches the second to last node
+        while(runner.next != null) {
+            walker = runner;
+            runner = runner.next;
+        }
+        // print the second to last value and return the list for chaining
+        console.log(walker.value);
+        return this;
     }
 
     // Write an algorithm that, given a second SLL, concatenates it to the end of another SLL
     concat(list2) {
+        // check to see if the first list is empty
+        if(this.head == null) {
+            // if it is empty, just set this list's head to the head of the second list
+            this.head = list2.head;
+            // clear the second list 
+            list2.head = null;
+            return this;
+        }
+        // set runner to this list's head and traverse to the end of the list
+        let runner = this.head;
+        while(runner.next != null) {
+            runner = runner.next;
+        }
+        // once at the end, set the next to list 2's head and clear list 2
+        runner.next = list2.head;
+        list2.head = null;
+        return this;
         
     }
 }
