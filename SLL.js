@@ -10,6 +10,7 @@ class SLList {
         this.head = null;
     }
 
+    // Print the whole list
     printList() {
         if(this.head == null) {
             console.log("The list is empty.");
@@ -25,6 +26,29 @@ class SLList {
         return this;
     }
 
+    // Is the list empty?
+    isEmpty() {
+        if(this.head == null) {
+            return true;
+        }
+        return false;
+    }
+
+    // Add to back
+    addToBack(value) {
+        if(this.head == null) {
+            this.head = new SLNode(value);
+            return this;
+        }
+        let runner = this.head;
+
+        while(runner.next != null) {
+            runner = runner.next;
+        }
+        runner.next = new SLNode(value);
+        return this;
+    }
+
     // Add to front
     addToFront(value) {
         // create the new node we want to add to the front
@@ -35,7 +59,6 @@ class SLList {
         this.head = newNode;
         return this;
     }
-
 
     // Remove from front
     removeFromFront() {
@@ -53,7 +76,6 @@ class SLList {
         // return the removed node
         return temp;
     }
-
 
     // Contains. Challenge --> Do this recursively
     contains(value) {
@@ -74,6 +96,7 @@ class SLList {
         // if we've reached the end of our list and NOT found the value, then it must not be in here
         return false;
     }
+
     // same as above but recursively
     rContains(value, runner = this.head) {
         // check for empty list or end of list because of recursion
@@ -198,7 +221,39 @@ class SLList {
         runner.next = list2.head;
         list2.head = null;
         return this;
+    }
+}
+
+class Queue {
+    constructor() {
+        this.queue = new SLList();
+    }
+
+    // For as many of these as you can, use combinations methods already in the SLList
+    
+    // write an enQueue method
+    enQueue(value) {
+
+    }
+
+    // write a deQueue method
+    deQueue() {
+
+    }
+
+    // return the value of the front of the queue 
+    front() {
         
+    }
+    
+    // write a method that determines whether the queue is empty or not
+    isEmpty() {
+
+    }
+
+    // write a method that returns the size of the queue
+    size() {
+
     }
 }
 
