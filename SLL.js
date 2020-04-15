@@ -281,29 +281,34 @@ class Queue {
     }
 }
 
-
+// Stack order: Last In First Out
 // Same deal as with the Queue: use the methods within the SLList to write algorithms for these functionalities of a stack
 class Stack {
     constructor() {
         this.stack = new SLList();
     }
     
+    // Adding to the "top" of the stack 
     push(value) {
 
     }
 
+    // Remove from the "top" of the stack
     pop() {
 
     }
 
+    // Show the value of the "top" of the stack
     peek() {
 
     }
 
+    // Is there anything actually in the stack?
     isEmpty() {
 
     }
 
+    // How many things are in the stack
     size() {
 
     }
