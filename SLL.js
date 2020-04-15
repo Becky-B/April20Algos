@@ -228,32 +228,84 @@ class Queue {
     constructor() {
         this.queue = new SLList();
     }
+    
 
     // For as many of these as you can, use combinations methods already in the SLList
     
-    // write an enQueue method
-    enQueue(value) {
+    // General functionality of a queue is FIFO --> first in, first out
+    // this means the first item that was added to the queue would be the first one removed
+    // the latest item added to the queue would be the LAST item removed
 
+    // write an enQueue method. Enqueue == add an element to the queue itself
+    enQueue(value) {
+        this.queue.addToBack(value);
+        return this;
     }
 
-    // write a deQueue method
+    // write a deQueue method. Dequeue == remove an element from the queue
     deQueue() {
-
+        this.removeFromFront();
+        return this;
     }
 
     // return the value of the front of the queue 
     front() {
-        
+        if(this.head != null) {
+            console.log(this.queue.head.value);
+            return this;
+        }
+        console.log("The queue is empty.")
+        return this;
     }
-    
+
     // write a method that determines whether the queue is empty or not
     isEmpty() {
-
+        if(this.queue.head == null) {
+            return true;
+        }
+        return false;
     }
 
     // write a method that returns the size of the queue
     size() {
-
+        let count = 0;
+        if(this.queue.head == null) {
+            return count;
+        }
+        let runner = this.queue.head;
+        while(runner != null) {
+            runner = runner.next;
+            count++;
+        }
+        return count;
     }
 }
 
+
+// Same deal as with the Queue: use the methods within the SLList to write algorithms for these functionalities of a stack
+class Stack {
+    constructor() {
+        this.stack = new SLList();
+    }
+    
+    push(value) {
+
+    }
+
+    pop() {
+
+    }
+
+    peek() {
+
+    }
+
+    isEmpty() {
+
+    }
+
+    size() {
+
+    }
+
+}
