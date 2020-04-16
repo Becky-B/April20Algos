@@ -290,27 +290,74 @@ class Stack {
     
     // Adding to the "top" of the stack 
     push(value) {
-
+        this.stack.addToFront(value);
+        return this;
     }
 
     // Remove from the "top" of the stack
     pop() {
-
+        this.stack.removeFromFront();
+        return this;
     }
 
     // Show the value of the "top" of the stack
     peek() {
-
+        if(this.stack.head == null) {
+            console.log("The stack is empty");
+            return this;
+        }
+        console.log(this.stack.head.value);
+        return this;
     }
 
     // Is there anything actually in the stack?
     isEmpty() {
-
+        return this.stack.isEmpty();
     }
 
     // How many things are in the stack
     size() {
+        let count = 0;
+        if(this.stack.head == null) {
+            console.log(count);
+            return this;
+        }
+        let runner = this.stack.head;
+        while(runner != null) {
+            runner = runner.next;
+            count++;
+        }
+        console.log(count);
+        return this;
+    }
+
+}
+
+
+// Create a queue using 2 stacks. A hint: stack_1 will hold the contents of the actual queue, stack_2 will be used in the enQueueing and deQueueing
+class QueueOfStacks {
+    constructor() {
+        this.stack_1 = new Stack();
+        this.stack_2 = new Stack();
+    }
+
+    enQueue(value) {
 
     }
 
+    deQueue() {
+
+    }
+
+    front() {
+
+    }
+
+    isEmpty() {
+
+    }
+
+    size() {
+
+    }
 }
