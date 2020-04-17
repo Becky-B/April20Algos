@@ -225,14 +225,89 @@ class SLList {
 
     // Write an algorithm that, assuming this list is sorted, will merge it together with another passed in SLL
     merge(list2) {
+        // If the first list is empty, just set the list's head to the head of the second list.
+        if(this.head == null) {
+            this.head = list2.head;
+            // then make sure to clear the second list
+            list2.head = null;
+            return this;
+        }
+        // if the second list is empty, there's really no second list to merge so return this list
+        else if (list2.head == null) {
+            return this;
+        }
+        // If the second list's head's value is smaller than the first list's head, just swap them 
+        // for an easy way to make sure list 1 starts with the smallest value
+        else if(list2.head.value < this.head.value) {
+            let temp = this.head;
+            this.head = list2.head;
+            list2.head = temp;
+        }
 
+        // 2 lists = 2 runners
+        let runner1 = this.head;
+        let runner2 = list2.head;
+        
+        // We'll be checking runner1's next's value so make sure runner1.next isn't null
+        while(runner1.next != null) {
+            // if we've reached the end of the second list, we're basically done.
+            if(runner2 == null) {
+                list2.head = null;
+                return this;
+            }
+            // at this point we know that runner 2's value is greater than runner 1's value
+            // so if runner 2 is greater than runner 1 but less than runner 1's next, then we
+            // want to wedge it on in between
+            else if(runner1.next.value > runner2.value) {
+                let temp1 = runner1.next;
+                let temp2 = runner2.next;
+                runner1.next = runner2;
+                runner2.next = temp1;
+                runner2 = temp2;
+            }
+            // otherwise just move it along
+            else {
+                runner1 = runner1.next;
+            }
+        }
+
+        // if we've reached the end of list 1 and there's still nodes left in list 2, tack them onto the end of list 1
+        if(runner2 != null) {
+            runner1.next = runner2;
+        }
+        // make sure list 2 is now empty and return
+        list2.head = null;
+        return this;
     }
 
-    // Write an algorithm that, assuming all lists are sorted, will merge together k number of sorted SLL's
-    mergeK(whatevenisthis) {
-        
+    // Write an algorithm that, assuming all lists are sorted, will merge together k number of sorted SLL's [list1, list2, list3, list4, ..., listk]
+    mergeK(arrayoflists) {
+        // this one is much easier assuming you've completed the merge function.
+        // just loop through the array of lists and merge each one into this list
+        for(let i = 0; i < arrayoflists.length; i++) {
+            this.merge(arrayoflists[i]);
+        }
+
+        return this;
     }
 }
+
+
+let list1 = new SLList();
+let list2 = new SLList();
+let list3 = new SLList();
+list1.addToBack(1);
+list1.addToBack(4);
+list1.addToBack(5);
+
+list2.addToBack(6);
+list2.addToBack(8);
+
+list3.addToBack(3);
+list3.addToBack(7);
+
+list2.mergeK([list1, list3]);
+list2.printList();
 
 class Queue {
     constructor() {
