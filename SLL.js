@@ -222,6 +222,16 @@ class SLList {
         list2.head = null;
         return this;
     }
+
+    // Write an algorithm that, assuming this list is sorted, will merge it together with another passed in SLL
+    merge(list2) {
+
+    }
+
+    // Write an algorithm that, assuming all lists are sorted, will merge together k number of sorted SLL's
+    mergeK(whatevenisthis) {
+        
+    }
 }
 
 class Queue {
@@ -296,8 +306,7 @@ class Stack {
 
     // Remove from the "top" of the stack
     pop() {
-        this.stack.removeFromFront();
-        return this;
+        return this.stack.removeFromFront();
     }
 
     // Show the value of the "top" of the stack
@@ -330,11 +339,10 @@ class Stack {
         console.log(count);
         return this;
     }
-
 }
 
 
-// Create a queue using 2 stacks. A hint: stack_1 will hold the contents of the actual queue, stack_2 will be used in the enQueueing and deQueueing
+// Create a queue using 2 stacks. A hint: stack_1 will hold the contents of the actual queue, stack_2 will be used in the enQueueing
 class QueueOfStacks {
     constructor() {
         this.stack_1 = new Stack();
@@ -342,22 +350,36 @@ class QueueOfStacks {
     }
 
     enQueue(value) {
-
+        while(!this.stack_1.isEmpty()) {
+            this.stack_2.push(this.stack_1.pop().value);
+        }
+        this.stack_1.push(value);
+        while(!this.stack_2.isEmpty()) {
+            this.stack_1.push(this.stack_2.pop().value);
+        }
+        return this;
     }
 
     deQueue() {
-
+        if(this.stack_1.isEmpty()) {
+            return "Queue is empty.";
+        }
+        return this.stack_1.pop();
     }
 
     front() {
-
+        return this.stack_1.peek();
     }
 
     isEmpty() {
-
+        if(this.stack_1.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
     size() {
-
+        return this.stack_1.size();
     }
 }
+

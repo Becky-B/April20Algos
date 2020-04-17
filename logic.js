@@ -1,3 +1,4 @@
+// WEEK 2 DAY 1
 // Puzzle 1
 
 // 50 coins
@@ -15,3 +16,8 @@
 
 // If 11 + 2 = 1
 // What does 9 + 5 = ?
+
+
+
+
+
