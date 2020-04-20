@@ -111,7 +111,6 @@ class SLList {
         return this.rContains(value, runner.next);
     }
 
-
     // Remove from the back of a singly linked list
     removeFromBack() {
         if(this.head == null) {
@@ -290,24 +289,17 @@ class SLList {
 
         return this;
     }
+
+    // Write an algorithm that will reverse a singly linked list.
+    // REMINDER! You not only need to reverse the order of the nodes themselves,
+    // but must also remember to set the previous end of the list as the new head of the list.
+    reverse() {
+
+    }
 }
 
 
-let list1 = new SLList();
-let list2 = new SLList();
-let list3 = new SLList();
-list1.addToBack(1);
-list1.addToBack(4);
-list1.addToBack(5);
 
-list2.addToBack(6);
-list2.addToBack(8);
-
-list3.addToBack(3);
-list3.addToBack(7);
-
-list2.mergeK([list1, list3]);
-list2.printList();
 
 class Queue {
     constructor() {
