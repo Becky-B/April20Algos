@@ -293,10 +293,62 @@ class SLList {
     // Write an algorithm that will reverse a singly linked list.
     // REMINDER! You not only need to reverse the order of the nodes themselves,
     // but must also remember to set the previous end of the list as the new head of the list.
-    reverse() {
 
+    // Three Pointer Method
+    reversePointers() {
+        if(this.head == null || this.head.next == null) {
+            return this;
+        }
+        let prev = null;
+        let runner = this.head;
+        let next = runner.next;
+
+        while(next != null) {
+            runner.next = prev;
+            prev = runner;
+            runner = next;
+            next = runner.next;
+            
+        }
+        runner.next = prev;
+        this.head = runner;
+        return this;
+    }
+
+    // Recursive Method
+    reverseR(runner = this.head, prev = null) {
+        if(runner == null) {
+            this.head = prev;
+            return this;
+        }
+        this.reverseR(runner.next, runner);
+        runner.next = prev;
+        return this;
     }
 }
+
+
+let list = new SLList();
+list.addToBack(1).addToBack(2).addToBack(3);
+list.printList();
+list.reverseR();
+list.printList();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
