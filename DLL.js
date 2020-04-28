@@ -152,12 +152,42 @@ class DLList {
 
     // Write an algorithm that will pre-pend a node into a DLL. Basically, addToFront
     prepend(value) {
-
+        if(this.head == null) {
+            this.head = new DLNode(value);
+            return this;
+        }
+        let newNode = new DLNode(value);
+        this.head.prev = newNode;
+        newNode.next = this.head;
+        this.head = newNode;
+        return this;
     }
 
 
     // Write an algorithm that will insert a new node into a certain index in the DLL. Let's say our DLL is zero indexed
-    insert(value, index) {
-
+    insert(value, index = 0) {
+        if(index < 0)
+            return this;
+        else if(index == 0) {
+            this.prepend(value);
+            return this;
+        }
+        let count = 1;
+        let runner = this.head;
+        while(count < index) {
+            if(runner == null) {
+                return this;
+            }
+            runner = runner.next;
+            count++;
+        }
+        let newNode = new DLNode(value);
+        newNode.prev = runner;
+        newNode.next = runner.next;
+        runner.next = newNode;
+        if(newNode.next != null) {
+            newNode.next.prev = newNode;
+        }
+        return this;
     }
 }
