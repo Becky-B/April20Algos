@@ -27,6 +27,12 @@ class BSTree {
 
     // write an algorithm that will find the largest number in a binary search tree
     max() {
-        
+
+    }
+
+    // 4/28 BONUS: Write an algorithm that can determine whether or not the binary search tree
+    // contains a node with a given value
+    contains(value) {
+
     }
 }
