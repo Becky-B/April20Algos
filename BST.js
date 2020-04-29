@@ -59,4 +59,21 @@ class BSTree {
         else 
             return this.contains(value, runner.right);
     }
+
+
+    // Write an algorithm that will add a new node to a Binary Search Tree
+    add(value) {
+
+    }
+
+    // Write an algorithm that will find the minimum value of the right subtree
+    minRight() {
+        
+    }
+
+
+    // Write an algorithm that will find the maximum value of the left subtree
+    maxLeft() {
+
+    }
 }
