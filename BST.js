@@ -149,12 +149,7 @@ class BSTree {
 
 
     // Write an algorithm that determines if a BST is full
-    isFull() {
-
-    }
-
-    // Write an algorithm that determines if a BST is complete
-    isComplete() {
+    isFull(runner = this.root) {
         
     }
 }
