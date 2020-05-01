@@ -123,12 +123,38 @@ class BSTree {
     }
 
     //Write an algorithm that finds the height of the Binary Search Tree
-    height() {
-
+    height(runner = this.root, height = 0) {
+        if(runner == null) {
+            return height;
+        }
+        let rightHeight = this.height(runner.right, height+1);
+        let leftHeight = this.height(runner.left, height+1);
+        if(leftHeight >= rightHeight)
+            return leftHeight;
+        return rightHeight;
     }
 
     //Write an algorithm that finds whether or not the Binary Search Tree is balanced
     isBalanced() {
+        if(this.root == null || (this.root.right == null && this.root.left == null)) {
+            return true;
+        }
+        else if(Math.abs(this.height(this.root.right) - this.height(this.root.left)) <= 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    // Write an algorithm that determines if a BST is full
+    isFull() {
+
+    }
+
+    // Write an algorithm that determines if a BST is complete
+    isComplete() {
         
     }
 }
